@@ -5,6 +5,7 @@
     "claim_date": "2022-03-31",
     "product_id": "P123",
     "product_name": "Panda Stuffed Animal",
+    "product_description": "A cute stuffed animal in the shape of a Panda",
     "product_cost": 50.0,
     "product_review": "The Panda is cute but it is damaged. There are scratches on the eyes, and stiches are broken leaving the cotton inside exposed.",
     "product_images": ["test/data/images/image1.jpg", "test/data/images/image2.jpg", "test/data/images/image3.jpg"]

@@ -38,7 +38,7 @@ class ImageAnalysisTool:
             content = [
                 {
                     "type": "text", 
-                    "text": """
+                    "text": f"""
                     Product Information:
                     - Product Name: {product_info['product_name']}
                     - Product Description: {product_info['product_description']}
@@ -103,7 +103,10 @@ class ImageAnalysisTool:
 if __name__ == "__main__":
     # Example usage
     image_tool = ImageAnalysisTool()
-    
+    product_info = {
+        "product_name": "Panda Stuffed Animal",
+        "product_description": "A cute stuffed animal in the shape of a Panda",
+    }
     product_image_paths = ["test/data/images/image1.jpg", "test/data/images/image2.jpg", "test/data/images/image3.jpg"]
     
     results = image_tool.analyze_images(product_image_paths)
