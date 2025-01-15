@@ -1,4 +1,6 @@
 from smart_claims.refund_flow import ClaimRefundFlow
+import gradio as gr
+
 
 def run():
     customer_claim = {
@@ -19,3 +21,50 @@ def run():
 
     print("---- Final Output ----")
     print(final_output)
+
+# TODO: Integrate the Gradio Interface with the ClaimRefundFlow
+# Function to process user inputs
+def process_input(customer_id, order_id, order_date, claim_date, product_id, 
+                  product_name, product_description, product_cost, product_review, product_images):
+    
+    # Simple response to show received data
+    response_text = f"Claim for Order {order_id} received. The product is {product_name}."
+    
+    # Constructing the returned data in the same format
+    return {
+        "customer_id": customer_id,
+        "order_id": order_id,
+        "order_date": order_date,
+        "claim_date": claim_date,
+        "product_id": product_id,
+        "product_name": product_name,
+        "product_description": product_description,
+        "product_cost": product_cost,
+        "product_review": product_review,
+        "product_images": product_images
+    }
+
+if __name__ == "__main__":
+    
+    # Create the Gradio Interface with structured input fields
+    iface = gr.Interface(
+        fn=process_input,
+        inputs=[
+            gr.Textbox(label="Customer ID", placeholder="Enter Customer ID", type="text"),
+            gr.Textbox(label="Order ID", placeholder="Enter Order ID", type="text"),
+            gr.DateTime(label="Order Date"),  # Date input for order date
+            gr.DateTime(label="Claim Date"),  # Date input for claim date
+            gr.Textbox(label="Product ID", placeholder="Enter Product ID", type="text"),
+            gr.Textbox(label="Product Name", placeholder="Enter Product Name", type="text"),
+            gr.Textbox(label="Product Description", placeholder="Enter Product Description", type="text"),
+            gr.Number(label="Product Cost"),
+            gr.Textbox(label="Product Review", placeholder="Enter Product Review", type="text"),
+            gr.Image(type="pil", label="Upload Product Images")  # Image input
+        ],
+        outputs=gr.JSON(label="Claim Details Output"),  # Output as JSON to show structured response
+        live=False,
+        submit_btn="Submit Claim",
+        title="Claim Refund Agent",
+    )
+
+    iface.launch()

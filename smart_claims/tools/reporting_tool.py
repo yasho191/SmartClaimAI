@@ -1,8 +1,8 @@
 from typing import Dict
 from openai import OpenAI
-from utils.config import Config
-from utils.prompts import REFUND_ESTIMATION_PROMPT
-from utils.data_models import RefundEstimationResponse
+from smart_claims.utils.config import Config
+from smart_claims.utils.prompts import REFUND_ESTIMATION_PROMPT
+from smart_claims.utils.data_models import RefundEstimationResponse
 
 client = OpenAI(api_key=Config.OPENAI_API_KEY)
 
