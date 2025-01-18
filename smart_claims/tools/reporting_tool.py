@@ -33,6 +33,8 @@ class RefundEstimationTool:
                     """
                 }
             ]
+            
+            # TODO: Add Calculator Tool to precisely estimate the refund amount
             response = client.chat.completions.create(
                 model=Config.REFUND_ESTIMATION_MODEL,
                 messages=[

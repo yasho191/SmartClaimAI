@@ -16,18 +16,46 @@ import gradio as gr
 #     "product_images": ["test/data/images/image1.jpg", "test/data/images/image2.jpg", "test/data/images/image3.jpg"]
 # }
 
+def validate_form_data(customer_id, order_id, order_date, claim_date, product_id, 
+                  product_name, product_description, product_cost, product_review, product_images):
+    
+    if not customer_id:
+        raise gr.Error("Customer ID cannot be empty")
+    if not order_id:
+        raise gr.Error("Order ID cannot be empty")
+    if not order_date:
+        raise gr.Error("Order Date cannot be empty")
+    if not claim_date:
+        raise gr.Error("Claim Date cannot be empty")
+    if not product_id:
+        raise gr.Error("Product ID cannot be empty")
+    if not product_name:
+        raise gr.Error("Product Name cannot be empty")
+    if not product_description:
+        raise gr.Error("Product Description cannot be empty")
+    if not product_cost:
+        raise gr.Error("Product Cost cannot be empty")
+    if not product_review:
+        raise gr.Error("Product Review cannot be empty")
+    if not product_images:
+        raise gr.Error("Product Images cannot be empty")
+    
+    
 # TODO: Integrate the Gradio Interface with the ClaimRefundFlow
 # Function to process user inputs
 def process_input(customer_id, order_id, order_date, claim_date, product_id, 
                   product_name, product_description, product_cost, product_review, product_images):
     
-    # Simple response to show received data
-    # TODO: Make Image format Compatible with Backend
+    validate_form_data(customer_id, order_id, order_date, claim_date, product_id, 
+                  product_name, product_description, product_cost, product_review, product_images)
+    
+    product_images = [image[0] for image in product_images]
+    
     customer_claim = {
         "customer_id": customer_id,
         "order_id": order_id,
-        "order_date": order_date,
-        "claim_date": claim_date,
+        "order_date": str(order_date),
+        "claim_date": str(claim_date),
         "product_id": product_id,
         "product_name": product_name,
         "product_description": product_description,
@@ -48,16 +76,16 @@ if __name__ == "__main__":
     iface = gr.Interface(
         fn=process_input,
         inputs=[
-            gr.Textbox(label="Customer ID", placeholder="Enter Customer ID", type="text"),
-            gr.Textbox(label="Order ID", placeholder="Enter Order ID", type="text"),
+            gr.Textbox(value="123", label="Customer ID", placeholder="Enter Customer ID", type="text"),
+            gr.Textbox(value="2", label="Order ID", placeholder="Enter Order ID", type="text"),
             gr.DateTime(label="Order Date"),  # Date input for order date
             gr.DateTime(label="Claim Date"),  # Date input for claim date
-            gr.Textbox(label="Product ID", placeholder="Enter Product ID", type="text"),
+            gr.Textbox(value="34", label="Product ID", placeholder="Enter Product ID", type="text"),
             gr.Textbox(label="Product Name", placeholder="Enter Product Name", type="text"),
             gr.Textbox(label="Product Description", placeholder="Enter Product Description", type="text"),
-            gr.Number(label="Product Cost"),
+            gr.Number(value=1, label="Product Cost", minimum=1, precision=2),
             gr.Textbox(label="Product Review", placeholder="Enter Product Review", type="text"),
-            gr.Image(type="pil", label="Upload Product Images")  
+            gr.Gallery(type="str", file_types=[".png", ".jpg", ".jpeg"], label="Upload Product Images")  
         ],
         outputs=gr.JSON(label="Claim Details Output"),  
         live=False,
