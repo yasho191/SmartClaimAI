@@ -75,7 +75,7 @@ SmartClaimAI is an AI-driven solution designed to streamline and automate the re
 
 ## Supported Models
 
-Currently, you can use gpt-4o, gpt-4o-mini or open-source model (Microsoft Phi3-Vision-Instruct) as the vision language model for image analysis. For sentiment analysis the model used is ProsusAI/finbert which classifies sentiment as (Positive, negative and Neutral). For final summarization and processing you can use gpt-4o or gpt-4o-mini. (Open source model will be supported soon)
+Currently, you can use `gpt-4o, gpt-4o-mini` or open-source model `microsoft/Phi-3.5-vision-instruct` as the vision language model for image analysis. For sentiment analysis the model used is `ProsusAI/finbert` which classifies sentiment as (Positive, negative and Neutral). For final summarization and processing you can use `gpt-4o or gpt-4o-mini`. (Open source model will be supported soon)
 
 ## Usage
 
