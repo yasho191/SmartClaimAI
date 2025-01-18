@@ -87,3 +87,6 @@ python main.py
 
 - **Submit Claims**: Use the application's interface to submit insurance claims with the necessary images.
 - **Automated Processing**: Leverage AI capabilities for image analysis, sentiment analysis, and fraud detection to process claims efficiently.
+
+**Dashboard Preview**
+![Gradio Dashboard](https://github.com/yasho191/SmartClaimAI/blob/main/test/images/claim_refund_agent_preview.png)

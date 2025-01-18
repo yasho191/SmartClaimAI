@@ -1,5 +1,6 @@
 smart_claim/
 .gradio/
+.DS_Store
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
