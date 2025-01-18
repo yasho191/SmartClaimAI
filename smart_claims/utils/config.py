@@ -17,9 +17,9 @@ class Config:
         'SENTIMENT_MODEL', 
         'ProsusAI/finbert'
     )
-    IMAGE_CLASSIFICATION_MODEL = os.getenv(
-        'IMAGE_CLASSIFICATION_MODEL', 
-        'gpt-4o-mini-2024-07-18'
+    IMAGE_ANALYSIS_MODEL = os.getenv(
+        'IMAGE_ANALYSIS_MODEL', 
+        'gpt-4o-mini'
     )
     REFUND_ESTIMATION_MODEL = os.getenv(
         'REFUND_ESTIMATION_MODEL', 
